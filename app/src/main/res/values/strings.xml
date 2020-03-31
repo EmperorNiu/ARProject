@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ARProject</string>
+    <string name="button_msg">GetPosition</string>
 </resources>

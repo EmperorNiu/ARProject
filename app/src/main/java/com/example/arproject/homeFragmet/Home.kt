@@ -2,6 +2,7 @@ package com.example.arproject.homeFragmet
 
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -33,7 +34,11 @@ class Home : Fragment() {
         val mLocationClient: LocationClient = LocationClient(context)
         val myListener: MyLocationListener = MyLocationListener()
         mLocationClient.registerLocationListener(myListener)
-        mLocationClient.start()
+
+        binding.button.setOnClickListener {
+            mLocationClient.start()
+            Log.d("try","get latitiude")
+        }
         return binding.root
     }
 
@@ -43,6 +48,7 @@ class Home : Fragment() {
             var longitude = location.getLongitude()
             viewModel.setLatitude(latitude)
             viewModel.setLongitiude(longitude)
+            Log.d("position","get latitiude" + latitude.toString())
         }
     }
 }
