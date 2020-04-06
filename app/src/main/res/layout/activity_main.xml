@@ -25,5 +25,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:navGraph="@navigation/navigation" />
+<!--        <fragment-->
+<!--            android:id="@+id/detail"-->
+<!--            android:layout_width="409dp"-->
+<!--            android:layout_height="729dp"-->
+<!--            android:name="com.example.arproject.detailFragment.DetailFragment"-->
+<!--            app:layout_constraintBottom_toBottomOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent"-->
+<!--            tools:layout="@layout/detail_fragment" />-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
