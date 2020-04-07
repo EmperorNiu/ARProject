@@ -13,6 +13,13 @@ import com.baidu.location.BDLocation
 import com.baidu.location.LocationClient
 import com.example.arproject.R
 import com.example.arproject.databinding.HomeFragmentBinding
+import com.example.arproject.network.Api
+import com.example.arproject.network.Building
+import com.example.arproject.network.Buildings
+import com.example.arproject.network.Position
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class Home : Fragment() {
@@ -38,6 +45,22 @@ class Home : Fragment() {
         binding.button.setOnClickListener {
             mLocationClient.start()
             Log.d("try","get latitiude")
+        }
+
+        binding.button.setOnClickListener{
+//            val building:Building = Building()
+            var position = Position(2.0,2.0)
+            Api.retrofitService.getBuildingId(position).enqueue(
+                object : Callback<Buildings>{
+                    override fun onFailure(call: Call<Buildings>, t: Throwable) {
+                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    }
+                    override fun onResponse(call: Call<Buildings>, response: Response<Buildings>) {
+                        binding.titleTextView.text = response.body()?.building_list?.get(0)?.Name
+                        binding.introTextView.text = response.body()?.building_list?.get(0)?.description
+                    }
+                }
+            )
         }
         return binding.root
     }
