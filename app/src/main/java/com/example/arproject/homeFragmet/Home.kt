@@ -1,6 +1,5 @@
 package com.example.arproject.homeFragmet
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import com.baidu.location.BDAbstractLocationListener
 import com.baidu.location.BDLocation
 import com.baidu.location.LocationClient
@@ -34,7 +34,7 @@ class Home : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
         val binding:HomeFragmentBinding = DataBindingUtil.inflate(inflater,R.layout.home_fragment,container,false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
@@ -47,21 +47,21 @@ class Home : Fragment() {
             Log.d("try","get latitiude")
         }
 
-        binding.button.setOnClickListener{
-//            val building:Building = Building()
-            var position = Position(2.0,2.0)
-            Api.retrofitService.getBuildingId(position).enqueue(
-                object : Callback<Buildings>{
-                    override fun onFailure(call: Call<Buildings>, t: Throwable) {
-                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                    }
-                    override fun onResponse(call: Call<Buildings>, response: Response<Buildings>) {
-                        binding.titleTextView.text = response.body()?.building_list?.get(0)?.Name
-                        binding.introTextView.text = response.body()?.building_list?.get(0)?.description
-                    }
-                }
-            )
-        }
+//        binding.button.setOnClickListener{
+////            val building:Building = Building()
+//            var position = Position(2.0,2.0)
+//            Api.retrofitService.getBuildingId(position).enqueue(
+//                object : Callback<Buildings>{
+//                    override fun onFailure(call: Call<Buildings>, t: Throwable) {
+//                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//                    }
+//                    override fun onResponse(call: Call<Buildings>, response: Response<Buildings>) {
+//                        binding.titleTextView.text = response.body()?.building_list?.get(0)?.Name
+//                        binding.introTextView.text = response.body()?.building_list?.get(0)?.description
+//                    }
+//                }
+//            )
+//        }
         return binding.root
     }
 
