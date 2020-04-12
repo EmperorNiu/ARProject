@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">ARProject</string>
     <string name="button_msg">GetPosition</string>
+    <string name="content1">课程：\n\t 数据结构实验课：每周二下午三点</string>
+    <string name="content2">今日讲座：\n\t 晚上7点 MBA讲座</string>
+    <string name="content3">地点介绍：\n\t 生物馆、化学馆和地理馆的统称，主要由数据科学与工程专业和xx等专业使用</string>
 </resources>
